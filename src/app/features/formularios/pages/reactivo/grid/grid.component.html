@@ -1,7 +1,17 @@
-<h2 style="background: red">Formulario Reactivo</h2>
+<h2 style="color: rgb(0, 162, 255)">Formulario Reactivo</h2>
 
-<form [formGroup]="form">
+<form [formGroup]="formReactivo">
   <input type="text" formControlName="campo" (keypress)="validarCampo()" />
+  <hr />
+  <h3>Vienen los campos dinamicos</h3>
+
+  <section formArrayName="camposArray">
+    <div *ngFor="let row of camposArray.controls; let i = index">
+      <div [formGroupName]="i">
+        <a href="">{{i}}</a><input type="text" />
+      </div>
+    </div>
+  </section>
 </form>
 
 <p>Revisar la consola para ver la salida despues de crear el form</p>
